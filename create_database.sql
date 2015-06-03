@@ -1,8 +1,12 @@
-CREATE TABLE(
-	MitarbeiterNR SERIAL CONSTRAINT mitNR_PK PRIMARY KEY,
+CREATE TABLE Mitarbeiter(
+	PersonalNr SERIAL CONSTRAINT mitPNR_PK PRIMARY KEY,
 	Name VARCHAR2(20) NOT Null,
-	Vorname VARCHAR2(20) NOT NULL
-
+	Vorname VARCHAR2(20) NOT NULL,
+	Strasse VARCHAR2(20) NOT NUll,
+	PLZ NUMBER(5) NOT NULL,
+	Stadt VARCHAR2(20) NOT NULL,
+	Telefonnummer NUMBER(20) NOT NULL
+        Position VARCHAR2(20) NOT NULL
 );
 
 
@@ -12,7 +16,7 @@ CREATE TABLE Kunde(
 	KundenNr SERIAL CONSTRAINT KdrNR_PK PRIMARY KEY,
 	Vorname VARCHAR2(20) NOT NULL,
 	Name VARCHAR2(20) NOT NULL,
-	Hausnummer NUMBER(3),
+	Strasse VARCHAR2(20),
 	PLZ NUMBER(5) NOT NULL,
 	Stadt VARCHAR2(20) NOT NULL,
 	Telefonnummer NUMBER(20) NOT NULL
@@ -51,8 +55,8 @@ CREATE TABLE GESUCH(
 	Erfasst_von        VARCHAR2(20)  NOT NULL,
 	Erfasst_am         TIMESTAMP(0)  NOT NULL,
 	
-	constraint erfasst_SK foreign key(Erfasst_am) REFERENCES Mitarbeiter(MitarbeiterNR)
-	--SK auf PK zum mitarbeiter (MitarbeiterNR)
+	constraint erfasst_SK foreign key(Erfasst_am) REFERENCES Mitarbeiter(PersonalNr)
+	--SK auf PK zum mitarbeiter (PersonalNr)
 );
 
 
@@ -82,8 +86,8 @@ CREATE TABLE Angebot(
 	
 	
 	
-	constraint erfasst_SK foreign key(Erfasst_am) REFERENCES Mitarbeiter(MitarbeiterNR)
-	--SK auf PK zum mitarbeiter (MitarbeiterNR)
+	constraint erfasst_SK foreign key(Erfasst_am) REFERENCES Mitarbeiter(PersonalNr)
+	--SK auf PK zum mitarbeiter (PersonalNr)
 );
 
 CREATE TABLE Ort(
