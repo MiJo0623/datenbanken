@@ -1,5 +1,7 @@
+
+
 CREATE TABLE Mitarbeiter(
-	PersonalNr SERIAL CONSTRAINT mitPNR_PK PRIMARY KEY,
+	PersonalNr Number(10) CONSTRAINT mitPNR_PK PRIMARY KEY,
 	Name VARCHAR2(20) NOT Null,
 	Vorname VARCHAR2(20) NOT NULL,
 	Strasse VARCHAR2(20) NOT NUll,
@@ -10,10 +12,10 @@ CREATE TABLE Mitarbeiter(
 );
 
 
-
+create sequence Kundenseq start with 1;
 
 CREATE TABLE Kunde(
-	KundenNr SERIAL CONSTRAINT KdrNR_PK PRIMARY KEY,
+	KundenNr Number(10) CONSTRAINT KdrNR_PK PRIMARY KEY,
 	Vorname VARCHAR2(20) NOT NULL,
 	Name VARCHAR2(20) NOT NULL,
 	Strasse VARCHAR2(20),
@@ -33,13 +35,15 @@ CREATE Table Auto(
 	
 );
 
+create sequence Gesuchseq start with 1;
+
 CREATE TABLE GESUCH(
 	Suchender NUMBER(10) --Constraint Gesuch_Kunde REFeRENCES Kunde(KundenNr),
 	
 	constraint Gesuch_Kunde FOREIGN KEY(Suchender) REFERENCES Kunde(KundenNr),
 	
 	
-	GesuchNr SERIAL CONSTRAINT GesuchNR_PK PRIMARY KEY,
+	GesuchNr Number(10) CONSTRAINT GesuchNR_PK PRIMARY KEY,
 	
 	Ort_Start NUMBER(5), --constraint gesuch_start_ortSK REFERENCES Ort(PLZ),
 	Ort_Ziel  Number(5), --constraint gesuch_ziel_ortSK  REFERENCES Ort(PLZ),
@@ -59,12 +63,13 @@ CREATE TABLE GESUCH(
 	--SK auf PK zum mitarbeiter (PersonalNr)
 );
 
+create sequence Angebotseq start with 1;
 
 CREATE TABLE Angebot(
 	Bietender NUMBER(10),-- Constraint Angebot_Kunde REFERENCES Kunde(KundenNr),
 	
 	constraint Angebot_Kunde FOREIGN KEY(Bietender) REFERENCES Kunde(KundenNr),
-	AngebotNr SERIAL CONSTRAINT AngebotNR_PK PRIMARY KEY,
+	AngebotNr Number(10) CONSTRAINT AngebotNR_PK PRIMARY KEY,
 	
 	
 	Ort_Start NUMBER(5) --constraint angebot_start_ortSK REFERENCES Ort(PLZ),
