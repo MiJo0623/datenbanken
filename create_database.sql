@@ -87,8 +87,8 @@ CREATE TABLE Angebot(
 );
 
 CREATE TABLE Ort(
-	PLZ NUMBER(5) constraint plz_PR PRIMARY KEY,
-	NAME VARCHAR2(30) NOT NULL
+	PLZ NUMBER(5) ,
+	NAME VARCHAR2(30) constraint name_PR PRIMARY KEY
 );
 
 CREATE TABLE Beziehung_Kunde_Gesuch(
