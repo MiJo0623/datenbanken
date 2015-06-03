@@ -42,7 +42,7 @@ CREATE TABLE GESUCH(
 	
 	
 	
-	Constraint angebot_start_ortSK FOREIGN KEY(Ort_Start,Ort_Ziel) REFERENCES Ort(PLZ),
+	Constraint angebot_start_ortSK FOREIGN KEY(Ort_Start,Ort_Ziel) REFERENCES Ort(Name),
 	
 	Fruehste_Startzeit TIMESTAMP(0)  NOT NULL,
 	Spateste_Startzeit TIMESTAMP(0)  NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE Angebot(
 	Ort_ueber Number(5) --constraint angebot_ueber_ort_SK REFERENCES Ort(PLZ), 
 
 
-	Constraint angebot_start_ortSK FOREIGN KEY(Ort_Start,Ort_Ziel,Ort_ueber) REFERENCES Ort(PLZ), 
+	Constraint angebot_start_ortSK FOREIGN KEY(Ort_Start,Ort_Ziel,Ort_ueber) REFERENCES Ort(Name), 
 
 
 	
@@ -114,8 +114,8 @@ CREATE TABLE Beziehung_Strecken
 	KM VARCHAR2(5) NOT NULL,
 	Ort_Start NUMBER(5),
 	Ort_Ziel Number(5),
-	Constraint strecke_start_SK FOREIGN KEY(Ort_Start) REFERENCES Ort(Plz),
-	constraint strecke_ziel_SK FOREIGN KEY(Ort_Ziel) REFERENCES Ort(Plz)
+	Constraint strecke_start_SK FOREIGN KEY(Ort_Start) REFERENCES Ort(Name),
+	constraint strecke_ziel_SK FOREIGN KEY(Ort_Ziel) REFERENCES Ort(Name)
 
 );
 
