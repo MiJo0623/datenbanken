@@ -27,7 +27,7 @@ CREATE TABLE Kunde(
 CREATE Table Auto(
 	Modell VARCHAR2(20),
 	Sitze Number(2) NOT NULL,
-	Kennzeichen VARCHAR2(15) NOT NULL UNIQUE,
+	Kennzeichen VARCHAR2(15) ,
 	Besitzer NUMBER(10) --CONSTRAINT ZugAuto_Kunde  REFERENCES Kunde(KundenNr)
 	constraint ZugAuto_Kunde FOREIGN KEY(Besitzer) REFERENCES Kunde(KundenNr)
 	
