@@ -41,7 +41,7 @@ Straße        varchar2(50) not null,
 plz           varchar2(5)   not null,
 stadt         varchar2(50) not null,
 telefonnummer varchar2(50),
-position_ varchar2(20) NOT NULL  --"position"!!!
+position varchar2(20) NOT NULL  --"position"!!!
 );
 
 insert into Mitarbeiter Values (1717234, 'Hans', 'Mueller', 'Clauzenfeld 17', '68162', 'Mannheim','0621/237641', 'Bueroangestelter' );
