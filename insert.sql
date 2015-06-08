@@ -11,7 +11,7 @@ drop table ort;
 
 Create table ort(
 PLZ           varchar2(5), --not null,  
-Ortsname      varchar2(50) constraint ort_pk$ort primary key --secundarys müssen auf unique oder pk zeige
+Ortsname      varchar2(50) constraint ort_PkOrt primary key --secundarys müssen auf unique oder pk zeige
 );
 
 insert into ort (Ortsname) Values ('Augsburg'); 
@@ -33,7 +33,7 @@ insert into ort (Ortsname) Values ('');
 
 
 create table Mitarbeiter(
-MitarbeiterNr NUMBER(20)  constraint mitarbeiter_pk$mitarbeiter primary key,
+MitarbeiterNr NUMBER(20)  constraint mitarbeiterNr_PkMitarbeiter primary key,
 Vorname       varchar2(50) not null,
 nachname      varchar2(50) not null,
 Straße        varchar2(50) not null,
@@ -53,7 +53,7 @@ Drop SEQUENCE  K_nr;
 CREATE SEQUENCE K_nr start with 1;
 
 Create table kunde(
-KundenNr      Serial  constraint kundennr_pk$kunde primary key,
+KundenNr      Serial  constraint kundenNr_PkKunde primary key,
 Vorname       varchar2(50) not null,
 nachname      varchar2(50) not null,
 Straße        varchar2(50) not null,
@@ -96,23 +96,23 @@ besitzer      NUMBER(20),-- constraint besitzer_sk references kunde(kundennr)
 Constraint besitzer_sk foreign key(besitzer) references Kunde(Kundennr)
 );
 
-insert into Automobil Values ('Grüne Ford Transit',6,'DA - XL 9',1);
-insert into Automobil Values ('Blauer VW Golf',5,'BOR - H 9987',2);
-insert into Automobil Values ('Weißes Mercedes Kombi',5,'DA - MH 312',1);
-insert into Automobil Values ('Blauer Renault Twingo',5,'KI - T 556 ',3);
-insert into Automobil Values ('Schwarzer Porsche',5,'HD - JJ 119',4);
-insert into Automobil Values ('Schwarzer Porsche',5,'HD - UT 86',5);
-insert into Automobil Values ('Verrosteter Renault R4',5,'WO - KJ 907',6);
+insert into Auto Values ('Grüne Ford Transit',6,'DA - XL 9',1);
+insert into Auto Values ('Blauer VW Golf',5,'BOR - H 9987',2);
+insert into Auto Values ('Weißes Mercedes Kombi',5,'DA - MH 312',1);
+insert into Auto Values ('Blauer Renault Twingo',5,'KI - T 556 ',3);
+insert into Auto Values ('Schwarzer Porsche',5,'HD - JJ 119',4);
+insert into Auto Values ('Schwarzer Porsche',5,'HD - UT 86',5);
+insert into Auto Values ('Verrosteter Renault R4',5,'WO - KJ 907',6);
 --insert into Automobil Values ('Weißes Mercedes Kombi',5,'DA - MH 312',7);
 
 
 
 create table angebot(
-AngebotNr     NUMBER(20)  constraint angebotNr_pk primary key,
-KundeNr       NUMBER(20)  constraint kundenNr_sk references Kunde(KundenNr),
-Ort_Start     varchar2(50)   constraint ort_start_sk references ort(Ortsname),
-Ort_Ueber     varchar2(50)   constraint ort_ueber_sk references ort(Ortsname),
-Ort_Ziel      varchar2(50)   constraint ort_ziel_sk  references ort(Ortsname),
+AngebotNr     NUMBER(20)  constraint angebotNr_PkAngebot primary key,
+KundeNr       NUMBER(20)  constraint kundenNr_skAngebot references Kunde(KundenNr),
+Ort_Start     varchar2(50)   constraint ort_start_skAngebot references ort(Ortsname),
+Ort_Ueber     varchar2(50)   constraint ort_ueber_skAngebot references ort(Ortsname),
+Ort_Ziel      varchar2(50)   constraint ort_ziel_skAngebot  references ort(Ortsname),
 Fruehste_Startzeit  Timestamp,
 Spaeteste_Startzeit Timestamp,
 Sitzplaetze   NUMBER(2),
@@ -120,7 +120,7 @@ Treffpunkt    varchar2(50),
 Bemerkung     varchar2(50),
 Erfasst_von   varchar2(50),
 Erfasst_am    timestamp,
-MitarbeiterNr NUMBER(20) constraint mitarbeiter_nr_sk references Mitarbeiter(MitarbeiterNr),
+MitarbeiterNr NUMBER(20) constraint mitarbeiter_nr_skAngebot references Mitarbeiter(MitarbeiterNr),
 
 Constraint kunden_nr_con$angebot unique(kundenr)
 );
@@ -131,10 +131,10 @@ Constraint kunden_nr_con$angebot unique(kundenr)
 
 
 create table Gesuch(
-GesuchNr      NUMBER(20)  constraint gesuchNr_pk primary key,
-KundeNr       NUMBER(20)  constraint kundenNr_sk$gesuch references Kunde(KundenNr),
-Ort_Start     varchar2(50)   constraint ort_start_sk$gesuch references ort(Ortsname),
-Ort_Ziel      varchar2(50)   constraint ort_ziel_sk$gesuch  references ort(Ortsname),
+GesuchNr      NUMBER(20)  constraint gesuchNr_PkGesuch primary key,
+KundeNr       NUMBER(20)  constraint kundenNr_skgesuch references Kunde(KundenNr),
+Ort_Start     varchar2(50)   constraint ort_start_skgesuch references ort(Ortsname),
+Ort_Ziel      varchar2(50)   constraint ort_ziel_skgesuch  references ort(Ortsname),
 Fruehste_Startzeit  Timestamp,
 Spaeteste_Startzeit Timestamp,
 Gesuchte_plaetze   NUMBER(2),
@@ -142,33 +142,33 @@ Treffpunkt    varchar2(50),
 Bemerkung     varchar2(50),
 Erfasst_von   varchar2(50),
 Erfasst_am    timestamp,
-MitarbeiterNr NUMBER(20) constraint mitarbeiter_nr_sk$gesuch references Mitarbeiter(MitarbeiterNr),
+MitarbeiterNr NUMBER(20) constraint mitarbeiter_nr_skGesuch references Mitarbeiter(MitarbeiterNr),
 Constraint kunden_nr_con$gesuch unique(kundenr)
 );
 
 
 create table Beziehung_Kunde_Gesuch(
-GesuchNr      NUMBER(20) constraint gesuch_nr_sk$bz_gesuch references gesuch(GesuchNr),
-KundeNr      NUMBER(20) constraint kunde_nr_sk$bz_gesuch references kunde(kundenNr)
+GesuchNr      NUMBER(20) constraint gesuch_nr_skBz_gesuch references gesuch(GesuchNr),
+KundeNr      NUMBER(20) constraint kunde_nr_skBz_gesuch references kunde(kundenNr)
 );
 
 create table Beziehung_kunde_angebot(
-AngebotNr      NUMBER(20) constraint angebot_nr_sk$bz_angebot references angebot(angebotNr),
-KundeNr      NUMBER(20) constraint kunde_nr_sk$bz_angebot references kunde(kundenNr)
+AngebotNr      NUMBER(20) constraint angebot_nr_skBz_angebot references angebot(angebotNr),
+KundeNr      NUMBER(20) constraint kunde_nr_skBz_angebot references kunde(kundenNr)
 );
 
 create table Beziehung_Strecken(
-Ort_Start     varchar2(50)   constraint ort_start_sk$strecke references ort(Ortsname),
-Ort_Ziel      varchar2(50)   constraint ort_ziel_sk$strecke references ort(Ortsname),
+Ort_Start     varchar2(50)   constraint ort_start_skStrecke references ort(Ortsname),
+Ort_Ziel      varchar2(50)   constraint ort_ziel_skStrecke references ort(Ortsname),
 km            NUMBER(5)
 );
 
 
 create table Beziehung_Vermittlung(
-AngebotNr     NUMBER(20) constraint angebot_nr_sk$bz_vermit references angebot(angebotNr),
-GesuchNr      NUMBER(20) constraint gesuch_nr_sk$bz_vermit references gesuch(GesuchNr),
-Fahrer        NUMBER(20) constraint fahre$bz_vermit references Angebot(KundeNr),
-Mitfahrer     NUMBER(20) constraint mitfahrer$bez_vermit references Gesuch(KundeNr),
+AngebotNr     NUMBER(20) constraint angebot_nr_skBz_vermit references angebot(angebotNr),
+GesuchNr      NUMBER(20) constraint gesuch_nr_skBz_vermit references gesuch(GesuchNr),
+Fahrer        NUMBER(20) constraint fahrer_bz_vermit references Angebot(KundeNr),
+Mitfahrer     NUMBER(20) constraint mitfahrerBez_vermit references Gesuch(KundeNr),
 Fahrt_done    NUMBER(1),
 gebuehr       float(20),
 Bezahlt_am    timestamp,
