@@ -1,16 +1,28 @@
-drop table Beziehung_Kunde_Gesuch;
-drop table Beziehung_kunde_angebot;
-drop table Beziehung_Strecken;
-drop table Beziehung_Vermittlung;
-drop table angebot;
-drop table gesuch;
-drop table auto;
-drop table mitarbeiter;
-drop table kunde;
-drop table ort;
+--drop table Beziehung_Kunde_Gesuch;
+--drop table Beziehung_kunde_angebot;
+--drop table Beziehung_Strecken;
+--drop table Beziehung_Vermittlung;
+--drop table angebot;
+--drop table gesuch;
+--drop table auto;
+--drop table mitarbeiter;
+--drop table kunde;
+--drop table ort;
 
 
+--delete table Beziehung_Kunde_Gesuch;
+--delete table Beziehung_kunde_angebot;
+--delete table Beziehung_Strecken;
+--delete table Beziehung_Vermittlung;
+--delete table angebot;
+--delete table gesuch;
+--delete table auto;
+--delete table mitarbeiter;
+--delete table kunde;
+--delete table ort;
 
+
+create sequence Mitarbeiterseq start with 1;
 
 CREATE TABLE Mitarbeiter(
 	PersonalNr Number(10) CONSTRAINT mitPNR_PK PRIMARY KEY,
@@ -19,8 +31,8 @@ CREATE TABLE Mitarbeiter(
 	Strasse VARCHAR2(20) NOT NUll,
 	PLZ NUMBER(5) NOT NULL,
 	Stadt VARCHAR2(20) NOT NULL,
-	Telefonnummer NUMBER(20) NOT NULL,
-        Position VARCHAR2(20) NOT NULL
+	Telefonnummer NUMBER(20) NOT NULL ,
+  Position VARCHAR2(20) NOT NULL
 );
 
 
