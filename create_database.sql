@@ -19,7 +19,7 @@ CREATE TABLE Mitarbeiter(
 	Strasse VARCHAR2(20) NOT NUll,
 	PLZ NUMBER(5) NOT NULL,
 	Stadt VARCHAR2(20) NOT NULL,
-	Telefonnummer NUMBER(20) NOT NULL
+	Telefonnummer NUMBER(20) NOT NULL,
         Position VARCHAR2(20) NOT NULL
 );
 
