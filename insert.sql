@@ -1,10 +1,10 @@
-drop table bz_kunde_gesuch;
-drop table bz_kunde_angebot;
-drop table strecke_bz;
-drop table bz_vermittlung;
+drop TABLE Beziehung_Kunde_Gesuch;
+drop table Beziehung_kunde_angebot;
+drop table Beziehung_Strecken;
+drop table Beziehung_Vermittlung;
 drop table angebot;
 drop table gesuch;
-drop table automobil;
+drop table auto;
 drop table mitarbeiter;
 drop table kunde;
 drop table ort;
@@ -87,7 +87,7 @@ insert into kunde
 Values ('Franz' , 'Bremkauf' , 'Knaufweg 15' , '98770' , 'Buxtehude', '01566/75917');
                   
 
-Create table Automobil(
+Create table Auto(
 Modell        varchar2(50),
 sitze         NUMBER(2) not null,
 kennzeichen   varchar2(50) unique,
@@ -107,7 +107,7 @@ insert into Automobil Values ('Verrosteter Renault R4',5,'WO - KJ 907',6);
 
 
 
-create table Angebot(
+create table angebot(
 AngebotNr     NUMBER(20)  constraint angebotNr_pk primary key,
 KundeNr       NUMBER(20)  constraint kundenNr_sk references Kunde(KundenNr),
 Ort_Start     varchar2(50)   constraint ort_start_sk references ort(Ortsname),
@@ -147,24 +147,24 @@ Constraint kunden_nr_con$gesuch unique(kundenr)
 );
 
 
-create table bz_kunde_gesuch(
+create table Beziehung_Kunde_Gesuch(
 GesuchNr      NUMBER(20) constraint gesuch_nr_sk$bz_gesuch references gesuch(GesuchNr),
 KundeNr      NUMBER(20) constraint kunde_nr_sk$bz_gesuch references kunde(kundenNr)
 );
 
-create table bz_kunde_angebot(
+create table Beziehung_kunde_angebot(
 AngebotNr      NUMBER(20) constraint angebot_nr_sk$bz_angebot references angebot(angebotNr),
 KundeNr      NUMBER(20) constraint kunde_nr_sk$bz_angebot references kunde(kundenNr)
 );
 
-create table strecke_bz(
+create table Beziehung_Strecken(
 Ort_Start     varchar2(50)   constraint ort_start_sk$strecke references ort(Ortsname),
 Ort_Ziel      varchar2(50)   constraint ort_ziel_sk$strecke references ort(Ortsname),
 km            NUMBER(5)
 );
 
 
-create table bz_vermittlung(
+create table Beziehung_Vermittlung(
 AngebotNr     NUMBER(20) constraint angebot_nr_sk$bz_vermit references angebot(angebotNr),
 GesuchNr      NUMBER(20) constraint gesuch_nr_sk$bz_vermit references gesuch(GesuchNr),
 Fahrer        NUMBER(20) constraint fahre$bz_vermit references Angebot(KundeNr),
