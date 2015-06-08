@@ -47,7 +47,7 @@ insert into ort (Ortsname) Values ('');
 insert into Mitarbeiter Values (1717234, 'Hans', 'Mueller', 'Clauzenfeld 17', '68162', 'Mannheim','0621/237641', 'Bueroangestelter' );
 insert into Mitarbeiter Values (1737255, 'Anna', 'Borreda', 'Muehlenweg 7', '61557', 'Oftersheim','06223/66786', 'Schichtleiterin' );
 insert into Mitarbeiter Values (1137327, 'Franz', 'Hoerner', 'Geranienstrasse 7', '68133', 'Mannheim','0621/6652526', 'Bueroangestelter' );
-
+--Mitarbeiterseq.Nextval
 
 --Drop SEQUENCE  Kundenseq start with 1;;
 --CREATE SEQUENCE Kundenseq start with 1; start with 1;
@@ -64,27 +64,27 @@ insert into Mitarbeiter Values (1137327, 'Franz', 'Hoerner', 'Geranienstrasse 7'
 --);
 
 insert into kunde
-Values ( 'Hans' , 'Meier' , 'Mühlingsstr 13'  , '68145' , 'Niederhockenstadt', '06447/31445');   
+Values ( kundenseq.NEXTVAL,'Hans' , 'Meier' , 'Mühlingsstr 13'  , '68145' , 'Niederhockenstadt', '06447/31445');   
 insert into kunde
-Values ('Hubert' , 'Mahlrumpf' , 'Kirchweg 17' , '45889' , 'Kirchheim', '03445/5617');
+Values (kundenseq.NEXTVAL,'Hubert' , 'Mahlrumpf' , 'Kirchweg 17' , '45889' , 'Kirchheim', '03445/5617');
 insert into kunde
-Values ('Frauke' , 'Keller' , 'Schwedenkai 1' , '23435' , 'Kiel', '02015/7617');
+Values (kundenseq.NEXTVAL,'Frauke' , 'Keller' , 'Schwedenkai 1' , '23435' , 'Kiel', '02015/7617');
 insert into kunde
-Values ('Uli' , 'Knauf' , 'Hauptstr. 15' , '69411' , 'Wiesloch', '06222/62552');
+Values (kundenseq.NEXTVAL,'Uli' , 'Knauf' , 'Hauptstr. 15' , '69411' , 'Wiesloch', '06222/62552');
 insert into kunde
-Values ('Fiederike' , 'Müller' , 'Speyererstr. 7' , '69133' , 'Heidelberg', '06221/988457');
+Values (kundenseq.NEXTVAL,'Fiederike' , 'Müller' , 'Speyererstr. 7' , '69133' , 'Heidelberg', '06221/988457');
 insert into kunde
-Values ('Franz' , 'Fritz' , 'Walzwerkstr. 13' , '65123' , 'Worms', '06231/728282');
+Values (kundenseq.NEXTVAL,'Franz' , 'Fritz' , 'Walzwerkstr. 13' , '65123' , 'Worms', '06231/728282');
 insert into kunde
-Values ('Franziska' , 'Meier' , 'Muehlingsstr 13' , '68145' , 'Niederhockenstadt', '06447/31445'); 
+Values (kundenseq.NEXTVAL,'Franziska' , 'Meier' , 'Muehlingsstr 13' , '68145' , 'Niederhockenstadt', '06447/31445'); 
 insert into kunde
-Values ('Franz' , 'Mützenmeier' , 'Hauptstr. 15' , '69411' , 'Wiesloch', '06222/67761');
+Values (kundenseq.NEXTVAL,'Franz' , 'Mützenmeier' , 'Hauptstr. 15' , '69411' , 'Wiesloch', '06222/67761');
 insert into kunde
-Values ('Hans' , 'Schindler' , 'Mühlweg 17' , '41778' , 'Heltersberg', '06327/456171');
+Values (kundenseq.NEXTVAL,'Hans' , 'Schindler' , 'Mühlweg 17' , '41778' , 'Heltersberg', '06327/456171');
 insert into kunde
-Values ('Elisa' , 'Knuff' , 'Geranienstrasse 7' , '98445' , 'Bamberg', '09887/52526');
+Values (kundenseq.NEXTVAL,'Elisa' , 'Knuff' , 'Geranienstrasse 7' , '98445' , 'Bamberg', '09887/52526');
 insert into kunde
-Values ('Franz' , 'Bremkauf' , 'Knaufweg 15' , '98770' , 'Buxtehude', '01566/75917');
+Values (kundenseq.NEXTVAL,'Franz' , 'Bremkauf' , 'Knaufweg 15' , '98770' , 'Buxtehude', '01566/75917');
                   
 
 --Create table Auto(
