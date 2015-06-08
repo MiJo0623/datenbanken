@@ -21,6 +21,11 @@
 --delete table kunde;
 --delete table ort;
 
+--DROP sequence Mitarbeiterseq;
+--DROP sequence Kundenseq  ;
+--DROP sequence Gesuchseq;
+--DROP sequence Angebotseq;
+
 
 create sequence Mitarbeiterseq start with 1;
 
